@@ -14,7 +14,7 @@ dataset/
 *.zip
 *.tar.gz
 *.rar
-
+* .pkl
 # Python artifacts
 __pycache__/
 *.py[cod]
