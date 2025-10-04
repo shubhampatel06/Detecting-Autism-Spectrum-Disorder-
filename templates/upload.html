@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autism Detection - File Upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Set background image for the body */
+        body {
+            background: url('{{ url_for('static', filename='dashboard.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Apply semi-transparent background to the container */
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px; /* Restrict the width for better readability */
+            width: 90%; /* Make it responsive */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for better contrast */
+            text-align: center; /* Center align the text */
+        }
+
+        /* Style form elements */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left; /* Align form labels and inputs to the left */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="file"],
+        input[type="text"],
+        input[type="number"],
+        input[type="tel"],
+        input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .link {
+            margin-top: 15px;
+        }
+
+        .link a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload an Image for Autism Detection</h2>
+        
+        <form method="POST" enctype="multipart/form-data" action="/upload">
+            <!-- enctype is required for file uploads -->
+            <div class="form-group">
+                <label for="file">Select Image:</label>
+                <input type="file" name="file" id="file" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="name">Child's Name:</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="age">Child's Age:</label>
+                <input type="number" name="age" id="age" min="1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Parent's Phone Number:</label>
+                <input type="tel" name="phone" id="phone" pattern="[0-9]{10}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Parent's Email Address:</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+
+            <button type="submit">Upload & Generate Report</button>
+        </form>
+        
+        <div class="link">
+            <a href="/dashboard">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autism Detection Result</title>
+</head>
+<body>
+    <h1>Autism Detection Result</h1>
+
+    {% if result %}
+        <p>{{ result }}</p>
+    {% else %}
+        <p>No result available at this time.</p>
+    {% endif %}
+
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

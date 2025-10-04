@@ -1,0 +1,38 @@
+# Ignore large files and folders
+uploads/
+dataset/
+*.db
+*.h5
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.mp4
+*.avi
+*.mov
+*.zip
+*.tar.gz
+*.rar
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE/editor
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secret/config
+.env
+

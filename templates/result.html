@@ -1,0 +1,386 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+</head>
+<body>
+    <h1>Prediction Result</h1>
+    <p>The uploaded image is classified as: <strong>{{ result }}</strong></p>
+    <a href="/upload">Upload another image</a> | <a href="/logout">Logout</a>
+</body>
+</html>
+
+-->
+
+
+<!-- templates/result.html -->
+ <!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Autism Detection Result</h2>
+        <div class="form-group">
+            <label for="result">Detection Result:</label>
+            <textarea id="result" readonly rows="4">Your result will be displayed here...</textarea>
+        </div>
+        <div class="link">
+            <a href="/dashboard">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
+-->
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('{{ url_for("static", filename="autism9.webp") }}') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0; /* Remove default body margin */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%; /* Make sure container takes full width */
+        }
+
+        .result-box {
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background-color: #000; /* Set background color to black */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px; /* Restrict max width */
+        }
+
+        .result-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #fff; /* Set text color to white */
+        }
+
+        .result-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .action-buttons a {
+            margin: 10px;
+            font-size: 16px;
+            color: #fff; /* Set button text color to white */
+        }
+
+        .action-buttons a:hover {
+            color: #000; /* Change color on hover */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="result-box">
+        <div class="result-icon">
+            {% if result == 'Autistic' %}
+                <span style="color: #e74c3c;">&#9888;</span>  
+            {% else %}
+                <span style="color: #2ecc71;">&#9989;</span> 
+            {% endif %}
+        </div>
+
+        <div class="result-text">
+            {% if result == 'Autistic' %}
+                Autism Detected
+            {% else %}
+                No Autism Detected
+            {% endif %}
+        </div>
+
+        <div class="action-buttons">
+            <a href="{{ url_for('upload') }}" class="btn btn-primary">Upload Another Image</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+-->
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result & Model Analysis</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('{{ url_for("static", filename="autism9.webp") }}') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .result-box {
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background-color: rgba(0, 0, 0, 0.85);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .result-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .result-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .action-buttons a {
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        .analysis-section {
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .analysis-section h2 {
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        .analysis-section img {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px 0;
+            border: 2px solid #fff;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="result-box">
+        <div class="result-icon">
+            {% if result == 'Autistic' %}
+                <span style="color: #e74c3c;">&#9888;</span>
+            {% else %}
+                <span style="color: #2ecc71;">&#9989;</span>
+            {% endif %}
+        </div>
+
+        <div class="result-text">
+            {% if result == 'Autistic' %}
+                Autism Detected
+            {% else %}
+                No Autism Detected
+            {% endif %}
+        </div>
+
+        <div class="action-buttons">
+            <a href="{{ url_for('upload') }}" class="btn btn-primary">Upload Another Image</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+    </div>
+
+    
+    <div class="analysis-section">
+        <h2>Model Accuracy</h2>
+        <img src="{{ url_for('static', filename='accuracy.png') }}" alt="Accuracy Graph">
+
+        <h2>Confusion Matrix</h2>
+        <img src="{{ url_for('static', filename='confusion_matrix.png') }}" alt="Confusion Matrix">
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+-->
+
+<!-- templates/result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prediction Result & Model Analysis</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('{{ url_for("static", filename="result.jpg") }}') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color: #fff;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .result-box {
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background-color: rgba(0, 0, 0, 0.85);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .result-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .result-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        .action-buttons a {
+            margin: 10px;
+            font-size: 16px;
+        }
+        .analysis-section {
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .analysis-section h2 {
+            margin-top: 20px;
+            color: #fff;
+        }
+        .analysis-section img {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px 0;
+            border: 2px solid #fff;
+            border-radius: 10px;
+        }
+        .explanation {
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            line-height: 1.5;
+            color: #ddd;
+            text-align: left;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Prediction Result Section -->
+    <div class="result-box">
+        <div class="result-icon">
+            {% if result == 'Autistic' %}
+                <span style="color: #e74c3c;">&#9888;</span>
+            {% else %}
+                <span style="color: #2ecc71;">&#9989;</span>
+            {% endif %}
+        </div>
+
+        <div class="result-text">
+            {% if result == 'Autistic' %}
+                Autism Detected
+            {% else %}
+                No Autism Detected
+            {% endif %}
+        </div>
+
+        <div class="action-buttons">
+            <a href="{{ url_for('upload') }}" class="btn btn-primary">Upload Another Image</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Model Analysis Section -->
+    <div class="analysis-section">
+        <h2>Model Accuracy</h2>
+        <img src="{{ url_for('static', filename='accuracy.png') }}" alt="Accuracy Graph" />
+        <div class="explanation">
+            The <span class="highlight">accuracy graph</span> shows how well the model learned during training. It plots
+            the percentage of correct predictions on the training data and validation data over each training epoch.
+            A higher and stable validation accuracy means the model generalizes well to new images like the one you uploaded.
+        </div>
+
+        <h2>Confusion Matrix</h2>
+        <img src="{{ url_for('static', filename='confusion_matrix.png') }}" alt="Confusion Matrix" />
+    <div class="explanation">
+    The <span class="highlight">confusion matrix</span> summarizes the model’s performance on test data:
+    <ul>
+        <li><strong>True Positives (TP):</strong> Autistic children correctly identified as autistic.</li>
+        <li><strong>True Negatives (TN):</strong> Non-autistic children correctly identified as non-autistic.</li>
+        <li><strong>False Positives (FP):</strong> Non-autistic children incorrectly identified as autistic.</li>
+        <li><strong>False Negatives (FN):</strong> Autistic children missed by the model.</li>
+    </ul>
+    <p><strong>Legend in Matrix:</strong></p>
+    <ul>
+        <li><strong>TP</strong>: Bottom-right cell</li>
+        <li><strong>TN</strong>: Top-left cell</li>
+        <li><strong>FP</strong>: Top-right cell</li>
+        <li><strong>FN</strong>: Bottom-left cell</li>
+    </ul>
+    For your uploaded image, the model’s prediction (<strong>{{ result }}</strong>) is based on this learned behavior,
+    aiming to minimize these errors.
+</div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

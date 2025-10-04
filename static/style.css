@@ -1,0 +1,98 @@
+/* General styles for the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('{{ url_for('static', filename='autism.jpg') }}');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: black; /* Black text color for better contrast */
+}
+
+/* Container to center content */
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff; /* White background */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Header style */
+h2 {
+    text-align: center;
+    color: #333; /* Dark text for the header */
+}
+
+/* Form styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    color: black; /* Black text inside inputs */
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #007bff; /* Blue background for buttons */
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Links */
+a {
+    color: #007bff; /* Blue link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Styling for the form submit button */
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for the 'link' section (login/signup toggle) */
+.link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.link a {
+    font-size: 16px;
+    color: #007bff;
+}
+
+.link a:hover {
+    text-decoration: underline;
+}
